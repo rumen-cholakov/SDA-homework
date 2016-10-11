@@ -1,0 +1,52 @@
+// calc
+
+#include <iostream>
+#include <math.h>
+
+using namespace std;
+
+int main() {
+
+int a, b;
+unsigned char op;
+
+cout << "enter 2 ints, followed by the operation you need (+, -, *, /, %, ^)" << endl;
+
+cin >> a >> b;
+if(!cin)
+{
+    cout << "Invalid input!";
+    return 0;
+}
+cin >> op;
+
+double res = 0;
+
+switch (op) {
+	case '+':
+        res = a+b;
+        break;
+	case '-':
+        res = a-b;
+        break;
+	case '*':
+        res = a*b;
+        break;
+	case '/':
+        res = a/b;
+        break;
+    case '%':
+        res = a%b;
+        break;
+    case '^':
+        res = pow(a, b);
+        break;
+    default:
+        cout << "Invalid operation!\n";
+}
+
+
+cout << res << endl;
+
+	return 0;
+}
