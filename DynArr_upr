@@ -1,0 +1,79 @@
+// DynArr_upr.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include <iostream>
+
+using namespace std;
+
+struct DA
+{
+	int *Data;
+	int Used;
+	int Size;
+};
+
+void Init(DA* Arr)
+{
+	Arr->Data = NULL;
+	Arr->Used = 0;
+	Arr->Size = 0;
+}
+
+void Reallocate(DA* Arr, int  NewSize)
+{
+	int* Temp = new int[NewSize];
+	for (int i = 0; i < Arr->Used; i++)
+	{
+		Temp[i] = Arr->Data[i];
+	}
+
+	delete[] Arr->Data;
+
+	Arr->Data = Temp;
+	Arr->Size = NewSize;
+}
+
+void Add(DA* Arr, int Elem)
+{
+	if (Arr->Size <= Arr->Used)
+	{
+		int NewSize = (Arr->Size == 0 ? 2 : Arr->Size * 2);
+		Reallocate(Arr, NewSize);
+	}
+	Arr->Data[Arr->Used++] = Elem;
+}
+
+void Free(DA* Arr)
+{
+	Arr->Size = 0;
+	Arr->Used = 0;
+
+	delete[] Arr->Data;
+	Arr->Data = NULL;
+}
+
+int GetData(DA* Arr, int i)
+{
+	return Arr->Data[i];
+}
+
+void main()
+{
+	DA da;
+	Init(&da);
+	for (int i = 0; i < 10; i++)
+	{
+		Add(&da, i);
+		cout << GetData(&da, i);
+	}
+	
+
+	Free(&da);
+    /*
+		Compexiti
+			  Accsess  Search  Insert   Delete
+		DA	O(1)	   O(n)	   O(???)   O(n)
+	*/
+}
+
