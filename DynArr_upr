@@ -70,10 +70,5 @@ void main()
 	
 
 	Free(&da);
-    /*
-		Compexiti
-			  Accsess  Search  Insert   Delete
-		DA	O(1)	   O(n)	   O(???)   O(n)
-	*/
 }
 
