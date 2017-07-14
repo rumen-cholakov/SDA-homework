@@ -10,8 +10,8 @@ class LStack {
 
 public:
     LStack();
-	LStack(LStack const & Other);
-	LStack& operator= (LStack const & Other);
+    LStack(LStack const & Other);
+    LStack& operator= (LStack const & Other);
     ~LStack();
 
 public:
@@ -25,7 +25,7 @@ public:
 private:
     void Init();
     void Destroy();
-	void CopyFrom(LStack const & Other);
+    void CopyFrom(LStack const & Other);
 
     node* pTop;
     size_t Size;
